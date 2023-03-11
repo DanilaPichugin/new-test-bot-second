@@ -16,7 +16,7 @@ theme: /
             $temp.date = currentDate();
         a: Сегодня {{$temp.date.format("DD.MM.YYYY")}}
     
-    state: Week day
+    state: Week Day
         intent!: /день недели
         script: 
             $temp.date = currentDate();
