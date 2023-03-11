@@ -1,4 +1,4 @@
-require: slotfilling/slotFilling.sc
+require: dateTime/dateTime.sc
   module = sys.zb-common
 theme: /
 
@@ -10,14 +10,18 @@ theme: /
         intent!: /привет
         a: Привет привет
 
-    state: Bye
-        intent!: /пока
-        a: Пока пока
+    state: Date
+        intent!: /текущая дата
+        script: 
+            $temp.date = currentDate();
+        a: Сегодня {{$temp.date.format("DD.MM.YYYY")}}
+    
+    state: Week day
+        intent!: /день недели
+        script: 
+            $temp.date = currentDate();
+        a: {{$temp.date.format("dddd")}}        
 
     state: NoMatch
         event!: noMatch
         a: Я не понял. Вы сказали: {{$request.query}}
-
-    state: Match
-        event!: match
-        a: {{$context.intent.answer}}
